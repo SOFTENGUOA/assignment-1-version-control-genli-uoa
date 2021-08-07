@@ -15,8 +15,8 @@ package se283.a1.t1;
  * You may COMMIT and PUSH prematurely too i.e. before each task is completed, but 
  * you "must" COMMIT and PUSH to the remote repo after finishing each of the A1 tasks.
  * 
- * @author Author Name: [YOUR NAME] Author UPI: [YOUR UPI]
- * @version Date: [CURRENT DATE] 
+ * @author Author Name: Gen Li Author UPI: gli030
+ * @version Date: 07/08/2021
  */
 
 public class T1Main {
