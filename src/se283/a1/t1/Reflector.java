@@ -20,7 +20,7 @@ import java.util.List;
  */
 
 public class Reflector {
-    public Object createClass(String fullyQualifiedClassName)
+    public Object createObject(String fullyQualifiedClassName)
         throws ClassNotFoundException, 
             IllegalAccessException,
             IllegalArgumentException,
