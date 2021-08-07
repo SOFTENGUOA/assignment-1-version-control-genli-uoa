@@ -1,6 +1,7 @@
 package se283.a1.t1;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 
 /**
@@ -33,14 +34,14 @@ public class Reflector {
             .newInstance();
     }
 
-    public HashMap<String, String> getNamesAndValuesOfFields(Object object) throws SecurityException {
+    public HashMap<String, String> getNamesAndValuesOfPublicFields(Object object) throws SecurityException {
         if (object == null) {
             throw new NullPointerException("Argument object is null.");
         }
-        HashMap<String, String> namesAndValuesOfFields = new HashMap<>();
+        HashMap<String, String> namesAndValuesOfPublicFields = new HashMap<>();
         for (Field field : object.getClass().getFields()) {
-            namesAndValuesOfFields[field.getName()] = field.get(object);
+            namesAndValuesOfPublicFields[field.getName()] = field.get(object);
         }
-        return namesAndValuesOfFields;
+        return namesAndValuesOfPublicFields;
     }
 }
