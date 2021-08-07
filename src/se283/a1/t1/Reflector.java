@@ -14,5 +14,16 @@ package se283.a1.t1;
  */
 
 public class Reflector {
-
+    public Object createClass(String fullyQualifiedClassName)
+        throws ClassNotFoundException, 
+            IllegalAccessException,
+            IllegalArgumentException,
+            InstantiationException,
+            InvocationTargetException,
+            NoSuchMethodException,
+            SecurityException {
+        return Class.forName(fullyQualifiedClassName)
+            .getConstructor()
+            .newInstance();
+    }
 }
