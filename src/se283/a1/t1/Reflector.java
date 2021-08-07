@@ -1,5 +1,8 @@
 package se283.a1.t1;
 
+import java.lang.reflect.Field;
+import java.util.HashMap;
+
 /**
  * SE283 Assignment 1 Task 1 Reflector - Instructions
  *  
@@ -25,5 +28,13 @@ public class Reflector {
         return Class.forName(fullyQualifiedClassName)
             .getConstructor()
             .newInstance();
+    }
+
+    public HashMap<String, String> getNamesAndValuesOfFields(Object object) throws SecurityException {
+        HashMap<String, String> namesAndValuesOfFields = new HashMap<>();
+        for (Field field : object.getClass().getFields()) {
+            namesAndValuesOfFields[field.getName()] = field.get(object);
+        }
+        return namesAndValuesOfFields;
     }
 }
