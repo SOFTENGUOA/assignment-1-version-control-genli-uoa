@@ -1,10 +1,7 @@
 package se283.a1.t1;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.lang.reflect.*;
+import java.util.*;
 
 /**
  * SE283 Assignment 1 Task 1 Reflector - Instructions
@@ -36,13 +33,14 @@ public class Reflector {
             .newInstance();
     }
 
-    public HashMap<String, String> getNamesAndValuesOfPublicFields(Object object) throws SecurityException {
+    public HashMap<String, Object> getNamesAndValuesOfPublicFields(Object object)
+        throws IllegalAccessException, SecurityException {
         if (object == null) {
             throw new NullPointerException("Argument object is null.");
         }
-        HashMap<String, String> namesAndValuesOfPublicFields = new HashMap<>();
+        HashMap<String, Object> namesAndValuesOfPublicFields = new HashMap<>();
         for (Field field : object.getClass().getFields()) {
-            namesAndValuesOfPublicFields[field.getName()] = field.get(object);
+            namesAndValuesOfPublicFields.put(field.getName(), field.get(object));
         }
         return namesAndValuesOfPublicFields;
     }
@@ -52,7 +50,7 @@ public class Reflector {
             throw new NullPointerException("Argument object is null.");
         }
         List<Method> methods = new ArrayList<>();
-        for (Method method : object.getMethods()) {
+        for (Method method : object.getClass().getMethods()) {
             if (method.getParameterCount() == 0) {
                 methods.add(method);
             }

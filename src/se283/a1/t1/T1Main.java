@@ -1,5 +1,9 @@
 package se283.a1.t1;
 
+import java.lang.reflect.Method;
+import java.util.Map;
+import java.util.Scanner;
+
 /**
  * SE283 Assignment 1 Task 1 Main - Instructions 
  * 
@@ -20,9 +24,57 @@ package se283.a1.t1;
  */
 
 public class T1Main {
+    private static final String MENU = "1. Choose a class, view its public fields and methods, and execute one of the methods.\n2. Quit.";
+    private static final Scanner input = new Scanner(System.in);
+    private static final Reflector reflector = new Reflector();
+
 	public static void main(String[] args) {
+        while (true) {
+            System.out.println(MENU);
+            System.out.print("Choice: ");
+            String choice = input.nextLine();
+            switch (choice) {
+                case "1":
+                    executeChoiceOne();
+                    break;
+                case "2":
+                    return;
+                default:
+                    System.err.println(choice + " is an invalid choice.");
+            }
+        }
+    }
+    
+    private static void executeChoiceOne() {
+        try {
+            System.out.print("Fully Qualified Class Name: ");
+            Object object = reflector.createObject(input.nextLine());
+            printNamesAndValuesOfPublicFields(object);
+            printPublicParameterlessMethods(object);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private static void printNamesAndValuesOfPublicFields(Object object) {
+        System.out.println("Names and Values of Public Fields");
+        try {
+            for (Map.Entry<String, Object> nameAndValueOfField : reflector.getNamesAndValuesOfPublicFields(object).entrySet()) {
+                System.out.println("\t" + nameAndValueOfField.getKey() + ":" + nameAndValueOfField.getValue());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-		// TODO Assignment 1, Question 1-2.	
-
-	}
+    private static void printPublicParameterlessMethods(Object object) {
+        System.out.println("Public Methods");
+        try {
+            for (Method method : reflector.getPublicParameterlessMethods(object)) {
+                System.out.println("\t" + method);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
