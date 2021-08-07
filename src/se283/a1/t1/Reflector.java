@@ -25,12 +25,18 @@ public class Reflector {
             InvocationTargetException,
             NoSuchMethodException,
             SecurityException {
+        if (fullyQualifiedClassName == null) {
+            throw new NullPointerException("Argument fullyQualifiedClassName is null.");
+        }
         return Class.forName(fullyQualifiedClassName)
             .getConstructor()
             .newInstance();
     }
 
     public HashMap<String, String> getNamesAndValuesOfFields(Object object) throws SecurityException {
+        if (object == null) {
+            throw new NullPointerException("Argument object is null.");
+        }
         HashMap<String, String> namesAndValuesOfFields = new HashMap<>();
         for (Field field : object.getClass().getFields()) {
             namesAndValuesOfFields[field.getName()] = field.get(object);
