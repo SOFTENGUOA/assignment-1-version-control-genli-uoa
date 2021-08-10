@@ -28,6 +28,7 @@ public class Reflector {
         if (fullyQualifiedClassName == null) {
             throw new NullPointerException("Argument fullyQualifiedClassName is null.");
         }
+
         return Class.forName(fullyQualifiedClassName)
             .getConstructor()
             .newInstance();
@@ -38,10 +39,13 @@ public class Reflector {
         if (object == null) {
             throw new NullPointerException("Argument object is null.");
         }
+
         HashMap<String, Object> namesAndValuesOfPublicFields = new HashMap<>();
+
         for (Field field : object.getClass().getFields()) {
             namesAndValuesOfPublicFields.put(field.getName(), field.get(object));
         }
+
         return namesAndValuesOfPublicFields;
     }
 
@@ -49,12 +53,15 @@ public class Reflector {
         if (object == null) {
             throw new NullPointerException("Argument object is null.");
         }
+
         List<Method> methods = new ArrayList<>();
+
         for (Method method : object.getClass().getMethods()) {
             if (method.getParameterCount() == 0) {
                 methods.add(method);
             }
         }
+
         return methods;
     }
 }
