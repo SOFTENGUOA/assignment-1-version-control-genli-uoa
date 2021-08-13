@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test class for Counter class
- * @author [YourName]
- * @version [Current Date]
+ * @author Gen Li
+ * @version 13/08/2021
  *
  */
 class CounterTest {
