@@ -1,7 +1,7 @@
 package se283.a1.t3;
 
 /**
- * It describes a polishing machine.
+ * It represents a polishing machine.
  *
  * @author Author Name: [YOUR NAME] Author UPI: [YOUR UPI]
  * @version Date: 20/08/2021
