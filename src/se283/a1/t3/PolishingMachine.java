@@ -21,7 +21,7 @@ public class PolishingMachine extends Machine {
 		return 82; 
 	}
 
-    @override
+    @Override
 	public double getCostPerUnitElectricity() {
 		return 4.5;
 	}
