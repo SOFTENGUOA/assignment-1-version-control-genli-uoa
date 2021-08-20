@@ -1,28 +1,21 @@
 package se283.a1.t3;
 
 /**
- * [ADD COMMENTS] Describe the class
- * 
- * @author Author Name: [YOUR NAME] Author UPI: [YOUR UPI]
- * @version Date: [CURRENT DATE] 
+ * It represents a cleaning job.
  *
- * Changed Performed: 
- * [Explain the changes made and their rationale. 
- * This description may overlap with the contents of commit messages]
+ * @author Author Name: [YOUR NAME] Author UPI: [YOUR UPI]
+ * @version Date: 20/08/2021
+ *
+ * - Extended the class from abstract-class Job; it minimises code.
+ * - Moved the logic inside method cleaningRent to method jobRent of abstract-class Job, and added an invocation of method jobRent of the abstract class to method polishingRent: it's for code minimisation.
+ * - Moved the comment on method cleaningRent to method jobRent of abstract-class Job; the comment and the latter method are more coherent.
+ * - Removed empty lines: they're non-essential.
  * 
  * Note: You may create new classes, methods or fields in this package
  *
  */
-
-public class CleaningJob {
-	// The method inputs the floor and cleaner objects and
-    // calculates the energy consumption cost for cleaning the floor area
+public class CleaningJob extends Job {
 	double cleaningRent(Floor floor, CleaningMachine cleaner) {
-		
-		double floorArea = floor.length() * floor.width();
-		double electricityPerUnitArea = floor.getCondition() * cleaner.getCapability();
-		double energyConsumption = electricityPerUnitArea * floorArea;
-		
-		return energyConsumption * cleaner.costPerUnitElectricity();
+        return jobRent(floor, cleaner);
 	}	
 }
