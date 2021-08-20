@@ -14,7 +14,7 @@ package se283.a1.t3;
  * Note: You may create new classes, methods or fields in this package
  *
  */
-public class CleaningJob {
+public class CleaningJob extends Job {
 	double cleaningRent(Floor floor, CleaningMachine cleaner) {
         return jobRent(floor, cleaner);
 	}	
